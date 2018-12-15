@@ -612,7 +612,7 @@ client.on('guildMemberAdd', member=> {
 
 
 client.on('message', message => {
-if(message.content == '471366790631522305') {
+if(message.content == '523551655724056585') {
 message.channel.startTyping()
 setTimeout(() => { 
 message.channel.stopTyping()
@@ -639,7 +639,7 @@ if (message.content.startsWith('$مسح')) { //xRGRx .. By Julian
   
   
   client.on('message', message => {       
-if (message.content.startsWith('$clear')) { //xRGRx .. By Julian
+if (message.content.startsWith('$$clear')) { //xRGRx .. By Julian
     if(!message.channel.guild) return message.reply('⛔ | This Command For Servers Only!'); 
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('⛔ | You dont have **MANAGE_MESSAGES** Permission!');
         if(!message.guild.member(client.user).hasPermission('MANAGE_MESSAGES')) return message.channel.send('⛔ | I dont have **MANAGE_MESSAGES** Permission!');
@@ -862,7 +862,7 @@ var prefix = "$";
 client.on('message', ( message ) => {
   if(message.author.bot) return;
 
-  if(message.channel.id !== '513129806762606673') return;
+  if(message.channel.id !== '497870034354438145') return;
 
   let types = [
     'jpg',
@@ -944,6 +944,32 @@ message.author.send(`**مدة الرابط : يـوم
     }
 });
 
+
+client.on('message', message => {
+var prefix = "$"
+    if (message.content.startsWith(prefix + 'clear')) {
+      if (!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(`ليس لديك برمشن[*MANAGE_MESSAGES*] `).catch(console.error);
+  message.delete()
+  if(!message.channel.guild) return;
+  let args = message.content.split(" ").slice(1);
+  
+  const messagecount = parseInt(args.join(' '));
+  
+  message.channel.fetchMessages({
+  
+  limit: messagecount
+  
+  }).then(messages => message.channel.bulkDelete(messages));
+  message.channel.sendMessage("", {embed: {
+    title: "``✏️✅ تــم مسح الشات ``",
+    color: 0x06DF00,
+    footer: {
+    
+    }
+    }}).then(msg => {msg.delete(3000)});
+  };
+  
+  });
 
 
 
